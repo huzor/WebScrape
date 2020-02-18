@@ -1,15 +1,26 @@
 ''' Libraries used for this project '''
 
 from bs4 import BeautifulSoup
-#from python-lxml import html
+#import lxml
 import requests
 
-'''Open html doc & parse it '''
-with open('scrape_doc.html') as am:
-    soup = BeautifulSoup(am, 'html.parser')
+'''Get webpage we want to parse'''
+result = requests.get('https://twitter.com/i/events/1228706829011566593')
+src = result.content
+#print(result.content)
+#print(result.status_code)
+#print(result.headers)
+
+'''Turn webpage into an object and parse it. '''
+soup = BeautifulSoup(src, 'html.parser')
 #print(soup.prettify())
 
-'''Navigate the data structure'''
+'''Get info on object'''
+
+#links = soup.find_all('a')
+#print(links)
+
+
 # print(soup.a)
 # print(soup.title)
 # print(soup.title.name)
@@ -21,5 +32,26 @@ with open('scrape_doc.html') as am:
 # print(soup.find(id="footnote"))
 # print(soup.find(class_= 'story'))
 
-tag = soup.p
-print(type(tag))
+'''Change tag name'''
+# tag = soup.p
+# tag.name = 'h3'
+# #print(type(tag))
+# print(tag.name)
+# print(soup.prettify())
+
+''' Extract all urls from page 'a' tags'''
+
+# for link in soup.find_all('a'):
+#     links = link.get('href')
+#     print(links)
+#
+# ''' Extract all text from a page '''
+# print(soup.get_text())
+
+'''Extract all urls that contain 'clintonyates' '''
+
+# linkage = soup.find_all('a')
+# for link in linkage:
+#     if 'clintonyates' in link.text:
+#         print(link)
+#         #print(link.attrs['href'])
