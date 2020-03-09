@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 import datetime
 
-### SEND REQUEST TO GET WEBPAGE WE WANT TO PARSE ###
+### SEND REQUEST TO GET BEST BUY WEBPAGE WE WANT TO PARSE ###
 def getPage(url,headers):
     get_url = requests.get(url, headers = headers)
     web_cont = get_url.content
@@ -16,17 +16,16 @@ headers = {
     }
 web_page = getPage(url,headers)
 
+### PRINT PAGE CONTENTS TO TXT FILE (used to verify that you have your intended page) ####
+# string_page = str(parsed_page)
+# with open('actual_page','a') as ap:
+#     ap.write(string_page)
+
 ### TURN WEBPAGE INTO OBJECT THAT CAN BE PARSED ###
 def webParser(page):
     soup = BeautifulSoup(page, 'html.parser')
     return soup
 parsed_page = webParser(web_page)
-
-
-### PRINT PAGE CONTENTS TO TXT FILE ####
-# string_page = str(parsed_page)
-# with open('actual_page','a') as ap:
-#     ap.write(string_page)
 
 #### GRAB PRODUCT INFORMATION ###
 products = parsed_page.find_all('li',{'class': 'sku-item'})
