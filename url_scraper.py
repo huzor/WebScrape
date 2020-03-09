@@ -1,7 +1,7 @@
 ### LIBRARIES USED FOR THIS PROJECT ###
 from bs4 import BeautifulSoup
 import requests
-import datetime
+
 
 ### SEND REQUEST TO GET BEST BUY WEBPAGE WE WANT TO PARSE ###
 def getPage(url,headers):
@@ -27,7 +27,7 @@ def webParser(page):
     return soup
 parsed_page = webParser(web_page)
 
-#### GRAB PRODUCT INFORMATION ###
+#### GRAB PRODUCT INFORMATION AND PLACE IT INTO CSV ###
 products = parsed_page.find_all('li',{'class': 'sku-item'})
 
 with open('products.csv','w') as pr:
