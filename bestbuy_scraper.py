@@ -12,7 +12,7 @@ def getPage(url,headers):
 url = 'https://www.bestbuy.com/site/desktop-computers/all-desktops/pcmcat143400050013.c?id=pcmcat143400050013&qp=customerreviews_facet%3DCustomer%20Rating~Top-Rated'
 
 headers = {
-    "User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/77.0.3865.90 Chrome/77.0.3865.90 Safari/537.36"
+    "User-Agent":"{Add browser info here}"
     }
 web_page = getPage(url,headers)
 
